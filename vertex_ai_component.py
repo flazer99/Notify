@@ -5,6 +5,7 @@ import json
 def notify(text: str, PROJECT_ID):
     vertexai.init(project=PROJECT_ID)
     gemini_pro_model = GenerativeModel("gemini-pro")
-    response = gemini_pro_model.generate_content(f"Make markdown notes - with headings, subheadings, points, emojis and descriptive content for the following text : {text}")
+    response = gemini_pro_model.generate_content(f"""Create markdown notes that include headings, subheadings, bullet points, emojis, and descriptive content for the following text. 
+    Additionally, incorporate any relevant information in a separate section as you deem necessary : {text}""")
 
     return response.text
